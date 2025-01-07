@@ -11,7 +11,7 @@ wn.bgcolor('black') #color outside of map boundry
 wn.setup(width = 1920, height = 1040)
 #win.attributes('-fullscreen',True)
 #win.title('TreasureQuest')
-wn.bgpic('main_map_day.gif') #game map
+wn.bgpic('Data/Maps/main_map_day.gif') #game map
 
 '''
 Setup collision by coordinates
@@ -56,25 +56,25 @@ player = Turtle()
 player.penup()
 #get images for animations
 #player animation moving north
-wn.register_shape("link_north_01.gif") #player left foot
-wn.register_shape("link_north_02.gif") #player right foot
-wn.register_shape("link_north_03.gif") #player standing
+wn.register_shape("Data/Characters/Sonic/sonic_north_01.gif") #player left foot
+wn.register_shape("Data/Characters/Sonic/sonic_north_02.gif") #player right foot
+wn.register_shape("Data/Characters/Sonic/sonic_north_03.gif") #player standing
 #player animation moving south
-wn.register_shape("link_south_01.gif") #player left foot
-wn.register_shape("link_south_02.gif") #player right foot
-wn.register_shape("link_south_03.gif") #player standing
+wn.register_shape("Data/Characters/Sonic/sonic_south_01.gif") #player left foot
+wn.register_shape("Data/Characters/Sonic/sonic_south_02.gif") #player right foot
+wn.register_shape("Data/Characters/Sonic/sonic_south_03.gif") #player standing
 #player animaton moving west
-wn.register_shape("link_west_01.gif") #begin step
-wn.register_shape("link_west_02.gif") #full stride
-wn.register_shape("link_west_03.gif") #end step
-wn.register_shape("link_west_04.gif") #standing
+wn.register_shape("Data/Characters/Sonic/sonic_west_01.gif") #begin step
+wn.register_shape("Data/Characters/Sonic/sonic_west_02.gif") #full stride
+wn.register_shape("Data/Characters/Sonic/sonic_west_03.gif") #end step
+wn.register_shape("Data/Characters/Sonic/sonic_west_04.gif") #standing
 #player animation moving east
-wn.register_shape("link_east_01.gif") #begin step
-wn.register_shape("link_east_02.gif") #full stride
-wn.register_shape("link_east_03.gif") #end step
-wn.register_shape("link_east_04.gif") #standing
+wn.register_shape("Data/Characters/Sonic/sonic_east_01.gif") #begin step
+wn.register_shape("Data/Characters/Sonic/sonic_east_02.gif") #full stride
+wn.register_shape("Data/Characters/Sonic/sonic_east_03.gif") #end step
+wn.register_shape("Data/Characters/Sonic/sonic_east_04.gif") #standing
 #player starting sprite
-player.shape("link_east_04.gif") #Defult position for player at begin game
+player.shape("Data/Characters/Sonic/sonic_east_04.gif") #Defult position for player at begin game
 
 #wn.register_shape("grass_01.gif")
 #grass = Turtle()
@@ -89,9 +89,9 @@ def walk_north():
     if player_pos in walk_north_collision:
         print("collision")
         player.setheading(90)
-        player.shape("link_north_01.gif")
-        player.shape("link_north_02.gif")
-        player.shape("link_north_03.gif")
+        player.shape("Data/Characters/Sonic/sonic_north_01.gif")
+        player.shape("Data/Characters/Sonic/sonic_north_02.gif")
+        player.shape("Data/Characters/Sonic/sonic_north_03.gif")
         #for i in range(4):
             #player.undo()
         #if player.xcor() in collision_x:
@@ -100,13 +100,13 @@ def walk_north():
             #print('collision triggered')
     else:
         player.setheading(90)
-        player.speed(3) #slows the speed down so the anmations look nice
-        player.shape("link_north_01.gif")
+        player.speed(0) #slows the speed down so the anmations look nice. ...so apparently the speed changes based on monitor resolution...
+        player.shape("Data/Characters/Sonic/sonic_north_01.gif")
         player.forward(10)
-        player.shape("link_north_02.gif")
+        player.shape("Data/Characters/Sonic/sonic_north_02.gif")
         player.forward(10)
-        player.shape("link_north_03.gif")
-        player.speed("normal") #resets the speed to default so the transitions are smoother
+        player.shape("Data/Characters/Sonic/sonic_north_03.gif")
+        player.speed(0) #resets the speed to default so the transitions are smoother
     player.setpos((round(player.pos()[0])),(round(player.pos()[1]))) #fixed a bug where the player position would no be a whole number
     player_pos = tuple(player.pos())
     print(f'Player X; ',player_pos[0])
@@ -117,20 +117,20 @@ def walk_south():
     player_pos = tuple(player.pos())
     if player_pos in walk_south_collision:
         print("collision")
-        player.shape("link_south_01.gif")
-        player.shape("link_south_02.gif")
-        player.shape("link_south_03.gif")
+        player.shape("Data/Characters/Sonic/sonic_south_01.gif")
+        player.shape("Data/Characters/Sonic/sonic_south_02.gif")
+        player.shape("Data/Characters/Sonic/sonic_south_03.gif")
         #for i in range(4):
             #player.undo()
     else:
         player.setheading(270)
-        player.speed(3) #slows the speed down so the anmations look nice
-        player.shape("link_south_01.gif")
+        player.speed(0) #slows the speed down so the anmations look nice
+        player.shape("Data/Characters/Sonic/sonic_south_01.gif")
         player.forward(10)
-        player.shape("link_south_02.gif")
+        player.shape("Data/Characters/Sonic/sonic_south_02.gif")
         player.forward(10)
-        player.shape("link_south_03.gif")
-        player.speed("normal") #resets the speed to default so the transitions are smoother
+        player.shape("Data/Characters/Sonic/sonic_south_03.gif")
+        player.speed(0) #resets the speed to default so the transitions are smoother
     player.setpos((round(player.pos()[0])),(round(player.pos()[1]))) #fixed a bug where the player position would no be a whole number
     player_pos = tuple(player.pos())
     print(f'Player X; ',player_pos[0])
@@ -147,24 +147,24 @@ def walk_east():
     player_pos = tuple(player.pos())
     if player_pos in walk_east_collision:
         print("collision")
-        player.shape("link_east_01.gif")
-        player.shape("link_east_02.gif")
-        player.shape("link_east_03.gif")
-        player.shape("link_east_04.gif")
+        player.shape("Data/Characters/Sonic/sonic_east_01.gif")
+        player.shape("Data/Characters/Sonic/sonic_east_02.gif")
+        player.shape("Data/Characters/Sonic/sonic_east_03.gif")
+        player.shape("Data/Characters/Sonic/sonic_east_04.gif")
             #for i in range(6):
                 #player.undo()
     else:
         player.setheading(0)
-        player.speed(9) #slows the speed down so the anmations look nice
-        player.shape("link_east_01.gif")
+        player.speed(3) #slows the speed down so the anmations look nice
+        player.shape("Data/Characters/Sonic/sonic_east_01.gif")
         player.forward(5)
-        player.shape("link_east_02.gif")
+        player.shape("Data/Characters/Sonic/sonic_east_02.gif")
         player.forward(5)
-        player.shape("link_east_03.gif")
+        player.shape("Data/Characters/Sonic/sonic_east_03.gif")
         player.forward(5)
-        player.shape("link_east_04.gif")
+        player.shape("Data/Characters/Sonic/sonic_east_04.gif")
         player.forward(5)
-        player.speed("normal") #resets the speed to default so the transitions are smoother 
+        player.speed(0) #resets the speed to default so the transitions are smoother 
     player.setpos((round(player.pos()[0])),(round(player.pos()[1]))) #fixed a bug where the player position would no be a whole number
     player_pos = tuple(player.pos())
     print(f'Player X; ',player_pos[0])
@@ -182,24 +182,24 @@ def walk_west():
     player_pos = tuple(player.pos())
     if player_pos in walk_west_collision:
         print("collision")
-        player.shape("link_west_01.gif")
-        player.shape("link_west_02.gif")
-        player.shape("link_west_03.gif")
-        player.shape("link_west_04.gif")
+        player.shape("Data/Characters/Sonic/sonic_west_01.gif")
+        player.shape("Data/Characters/Sonic/sonic_west_02.gif")
+        player.shape("Data/Characters/Sonic/sonic_west_03.gif")
+        player.shape("Data/Characters/Sonic/sonic_west_04.gif")
         #for i in range(6):
             #player.undo()
     else:
         player.setheading(180)
-        player.speed(9) #slows the speed down so the anmations look nice
-        player.shape("link_west_01.gif")
+        player.speed(3) #slows the speed down so the anmations look nice
+        player.shape("Data/Characters/Sonic/sonic_west_01.gif")
         player.forward(5)
-        player.shape("link_west_02.gif")
+        player.shape("Data/Characters/Sonic/sonic_west_02.gif")
         player.forward(5)
-        player.shape("link_west_03.gif")
+        player.shape("Data/Characters/Sonic/sonic_west_03.gif")
         player.forward(5)
-        player.shape("link_west_04.gif")
+        player.shape("Data/Characters/Sonic/sonic_west_04.gif")
         player.forward(5)
-        player.speed("normal") #resets the speed to default so the transitions are smoother
+        player.speed(0) #resets the speed to default so the transitions are smoother
     player.setpos((round(player.pos()[0])),(round(player.pos()[1]))) #fixed a bug where the player position would no be a whole number
     player_pos = tuple(player.pos())
     print(f'Player X; ',player_pos[0])
@@ -241,7 +241,7 @@ wn.listen()
 #wn.onkey(lambda: player.setheading(270), 'Down')
 #player_pos = tuple(player.pos())
 if tuple(player.pos()) == (0,0):
-    print("while loop enabled")
+    print("Origin 0,0")
 
 
 
